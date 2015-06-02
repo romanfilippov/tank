@@ -1,0 +1,111 @@
+
+<html>
+
+<script src="mel.js"></script>
+
+<script>
+
+ 
+var x = 100;
+var y = 100;
+var ax = 120;
+var ay = 120;
+var shoot = 0;
+var point = 100;
+var upe = 100;
+var dir = 0;
+var score = 0;
+var exp = 0;
+var upg = 0;
+var speed  = 0;
+var gun = 100;
+var ball = 8;
+var ballx = 0;
+var bally = 0;
+var ballshoot = 0;
+
+
+
+function paint() {
+image(300,300,"http://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Maat_Mons_on_Venus.jpg/800px-Maat_Mons_on_Venus.jpg");
+//BEGIN
+circle(ax+speed,ay,5,red);
+//mishan
+line(520,0+upe,540,0+upe,red);
+line(520,0+upe,520,20+upe,red);
+line(520,20+upe,540,20+upe,red);
+line(540,upe,540,20+upe,red);
+
+  //tank
+ line(17+x,77+y,92+x,77+y,blue);
+ line(17+x,77+y,17+x,48+y,blue);
+ line(17+x,48+y,92+x,48+y,blue);
+ line(92+x,48+y,92+x,77+y,blue);
+ line(32+x,48+y,48+x,28+y,blue);
+ line(48+x,28+y,69+x,28+y,blue);
+ line(69+x,28+y,79+x,48+y,blue);
+ line(74+x,40+y,100+x,24+y,blue);
+ 
+ //ball shoot
+  //if (ballshoot=1) {bally=bally+1};
+  
+ 
+ 
+ //gun
+//line(50,0,70,50,blue);
+ //line(70,50,90,50,blue);
+ //line(90,50,70,0,blue);
+ 
+ //ball
+ //circle(80+ballx,50+bally,8,blue);
+ 
+ 
+ //up down right left for tank
+if (key==right) x=x+1;
+if (key==left) x=x-1;
+if (key==down) y=y+1;
+if (key==up) y=y-1;
+
+ //shoot
+if (key==keyw) shoot=1;
+if (shoot==0) {ax=100+x; ay=24+y;}
+if (shoot==1) {ax = ax + 2};
+
+if (ax>800) {shoot=0;}
+
+ //speed meshan
+if (dir==0) {upe=upe+1;}
+if (dir==1) {upe=upe-1;}
+if (upe==580) {dir=1;}
+if (upe==0) {dir=0;}
+ 
+  //upg
+if (key==keyt) {upg=1};
+if (key==keyy) {upg=0};
+
+//score and image and shoot
+if (score>10) {ax=ax+2};
+if (ax>520 && ax<540 && ay>upe && ay<20+upe) {
+image(530,upe,"http://3.bp.blogspot.com/-EBoX20xW33Y/TVS7_R29MrI/AAAAAAAAAgw/SLczy25vZAI/s1600/DeathExplosion4.png");
+exp=20;
+score=score+1;
+shoot=0;}
+if (x>600) {x=600};
+if (x>200) {x=200};
+if (x<0) {x=0};
+if (y>520) {y=520};
+if (y<-25) {y=-25};
+if (exp>0){
+image(530,upe,"explosion.png");
+exp=exp-1;
+}
+ //score
+ 
+text(650,40,score,red,20);
+
+//END
+}
+
+</script>
+
+</html>
